@@ -14,6 +14,7 @@
     "test:format": "prettier --check .",
     "test": "node index.js -i test/input.idx -o test/output.srt -v",
     "ci:test": "run-s test:* test",
+    "preversion": "npm run ci:test",
     "postversion": "git push && git push origin --tags",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
