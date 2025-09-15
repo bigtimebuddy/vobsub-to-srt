@@ -154,7 +154,7 @@ import { VobSubDecoder } from "@bigtimebuddy/vobsub-to-srt";
 const decoder = new VobSubDecoder({ verbose: true });
 
 // Parse IDX file
-await decoder.parseIdx("subtitles.idx");
+await decoder.parse("subtitles.idx");
 
 // Extract frames to temporary directory
 const frames = await decoder.extractFrames(
