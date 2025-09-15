@@ -4,6 +4,7 @@ import { execFile } from "node:child_process";
 import { promisify, parseArgs } from "node:util";
 import { tmpdir } from "node:os";
 import MacOCR from "@cherrystudio/mac-system-ocr";
+import ffmpegStatic from "ffmpeg-static";
 
 const execFileAsync = promisify(execFile);
 
@@ -328,7 +329,7 @@ class VobSubDecoder {
 
     try {
       if (this.verbose) console.log(`Running: ffmpeg ${ffmpegArgs.join(" ")}`);
-      const { stderr } = await execFileAsync("ffmpeg", ffmpegArgs);
+      const { stderr } = await execFileAsync(ffmpegStatic, ffmpegArgs);
 
       if (stderr && !stderr.includes("muxing overhead")) {
         if (this.verbose) console.warn("FFmpeg warnings:", stderr);
@@ -371,7 +372,7 @@ class VobSubDecoder {
 
       if (this.verbose)
         console.log(
-          `Successfully processed ${subtitlesWithImages.length} subtitle frames`,
+          `Successfully processed ${subtitlesWithImages.length} subtitle frames`
         );
       return subtitlesWithImages;
     } catch (error) {
@@ -399,12 +400,12 @@ class VobSubDecoder {
 
     // Extract all image paths for batch processing
     const imagePaths = subtitlesWithImages.map(
-      (subtitle) => subtitle.imagePath,
+      (subtitle) => subtitle.imagePath
     );
 
     if (this.verbose)
       console.log(
-        `Processing ${imagePaths.length} frames with MacOCR batch processing...`,
+        `Processing ${imagePaths.length} frames with MacOCR batch processing...`
       );
 
     try {
@@ -437,7 +438,7 @@ class VobSubDecoder {
           if (!text || text.trim().length < 2) {
             if (this.verbose)
               console.log(
-                `  No text detected in frame ${subtitle.frameIndex || i + 1}`,
+                `  No text detected in frame ${subtitle.frameIndex || i + 1}`
               );
             continue;
           }
@@ -447,7 +448,7 @@ class VobSubDecoder {
 
           if (this.verbose)
             console.log(
-              `  Frame ${subtitle.frameIndex || i + 1}: "${wrappedText.replace(/\n/g, " | ")}"`,
+              `  Frame ${subtitle.frameIndex || i + 1}: "${wrappedText.replace(/\n/g, " | ")}"`
             );
 
           const startTime = subtitle.timestamp;
@@ -464,7 +465,7 @@ class VobSubDecoder {
         } catch (error) {
           console.warn(
             `Processing failed for subtitle frame ${subtitle.frameIndex || i + 1}:`,
-            error.message,
+            error.message
           );
         }
       }
@@ -475,7 +476,7 @@ class VobSubDecoder {
 
     if (this.verbose)
       console.log(
-        `Completed batch OCR processing of ${subtitlesWithImages.length} frames`,
+        `Completed batch OCR processing of ${subtitlesWithImages.length} frames`
       );
     return srtEntries;
   }

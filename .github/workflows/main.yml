@@ -11,9 +11,6 @@ jobs:
     name: Build
     runs-on: "macos-latest"
     steps:
-      - name: Install FFmpeg
-        run: brew install ffmpeg
-        shell: bash
       - name: Checkout
         uses: actions/checkout@v4
       - name: Use Node.js
@@ -22,6 +19,8 @@ jobs:
           node-version: 22
       - name: Install Dependencies
         run: npm ci
+      - name: Test
+        run: npm run ci:test
       - name: Publish
         if: github.event_name == 'release'
         run: npm publish
