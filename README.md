@@ -167,7 +167,7 @@ const frames = await decoder.extractFrames(
 const srtEntries = await decoder.processFrames(frames);
 
 // Generate SRT file
-await decoder.generateSRT(srtEntries, "output.srt");
+await decoder.generate(srtEntries, "output.srt");
 ```
 
 ## Troubleshooting
