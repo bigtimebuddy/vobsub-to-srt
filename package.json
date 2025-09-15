@@ -1,6 +1,6 @@
 {
   "name": "vobsub-to-srt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
