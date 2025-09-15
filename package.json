@@ -1,7 +1,7 @@
 {
   "name": "vobsub-to-srt",
   "version": "0.0.1",
-  "description": "",
+  "description": "Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR.",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -13,8 +13,21 @@
     "test:lint": "eslint .",
     "test:format": "prettier --check .",
     "test": "node index.js -i test/input.idx -o test/output.srt -v",
-    "ci:test": "run-s test:* test"
+    "ci:test": "run-s test:* test",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
+  "clean-package": {
+    "indent": 2,
+    "remove": [
+      "scripts",
+      "clean-package",
+      "devDependencies"
+    ]
+  },
+  "files": [
+    "index.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -48,6 +61,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "clean-package": "^2.2.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "npm-run-all": "^4.1.5",
