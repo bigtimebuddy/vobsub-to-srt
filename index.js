@@ -576,7 +576,6 @@ function showHelp() {
   console.log("  -h, --help           Show this help message");
   console.log("");
   console.log("Requirements:");
-  console.log("  - FFmpeg must be installed and available in PATH");
   console.log("  - Mac System OCR (macOS only)");
   console.log("");
   console.log("Features:");
