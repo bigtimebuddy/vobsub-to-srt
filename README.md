@@ -67,12 +67,13 @@ vobsub-to-srt -i subtitles.idx -o subtitles.srt -v
 
 ### Command Line Options
 
-| Option      | Short | Description                  | Required |
-| ----------- | ----- | ---------------------------- | -------- |
-| `--input`   | `-i`  | Path to the input IDX file   | ✅ Yes   |
-| `--output`  | `-o`  | Path for the output SRT file | ✅ Yes   |
-| `--verbose` | `-v`  | Enable verbose logging       | ❌ No    |
-| `--help`    | `-h`  | Show help information        | ❌ No    |
+| Option      | Short | Description                                       | Required |
+| ----------- | ----- | ------------------------------------------------- | -------- |
+| `--input`   | `-i`  | Path to the input IDX file                        | ✅ Yes   |
+| `--output`  | `-o`  | Path for the output SRT file                      | ✅ Yes   |
+| `--quality` | `-q`  | OCR quality: 'fast' or 'accurate' (default: fast) | ❌ No    |
+| `--verbose` | `-v`  | Enable verbose logging                            | ❌ No    |
+| `--help`    | `-h`  | Show help information                             | ❌ No    |
 
 ### Example Output
 
