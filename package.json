@@ -1,0 +1,55 @@
+{
+  "name": "vobsub-to-srt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "vobsub-to-srt": "index.js"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "test:lint": "eslint .",
+    "test:format": "prettier --check .",
+    "test": "node index.js -i test/input.idx -o test/output.srt -v",
+    "ci:test": "run-s test:* test"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigtimebuddy/vobsub-to-srt.git"
+  },
+  "keywords": [
+    "vobsub",
+    "srt",
+    "ffmpeg",
+    "ocr",
+    "subtitle"
+  ],
+  "author": "bigtimebuddy",
+  "contributors": [
+    {
+      "name": "bigtimebuddy",
+      "url": "https://github.com/bigtimebuddy"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@cherrystudio/mac-system-ocr": "^0.2.5",
+    "canvas": "^3.2.0",
+    "pngjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.6.2"
+  }
+}
