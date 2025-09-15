@@ -151,17 +151,17 @@ You can also use this package programmatically:
 ```javascript
 import { VobSubDecoder } from "@bigtimebuddy/vobsub-to-srt";
 
-const decoder = new VobSubDecoder({ verbose: true });
+const decoder = new VobSubDecoder({
+  idxFile: "subtitles.idx",
+  subFile: "subtitles.sub",
+  verbose: true,
+});
 
 // Parse IDX file
-await decoder.parse("subtitles.idx");
+await decoder.parse();
 
 // Extract frames to temporary directory
-const frames = await decoder.extractFrames(
-  "subtitles.idx",
-  "subtitles.sub",
-  "/tmp/frames",
-);
+const frames = await decoder.extractFrames("/tmp/frames");
 
 // Process with OCR
 const srtEntries = await decoder.processFrames(frames);
