@@ -1,6 +1,6 @@
 # VobSub to SRT Converter
 
-Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR.
+Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR. This approach has some benefits over [vobsub2srt](https://github.com/ruediger/VobSub2SRT) and [vobsubocr](https://github.com/elizagamedev/vobsubocr) in that Mac System OCR is generally more fast, accurate and built-in.
 
 ## Overview
 
@@ -199,12 +199,6 @@ await decoder.generateSRT(srtEntries, "output.srt");
 git clone https://github.com/bigtimebuddy/vobsub-to-srt.git
 cd vobsub-to-srt
 npm install
-node index.js -i test/input.idx -o test/output.srt -v
-```
-
-### Testing
-
-```bash
 npm test
 ```
 
