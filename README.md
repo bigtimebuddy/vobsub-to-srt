@@ -24,17 +24,6 @@ This tool provides a complete solution for converting VobSub bitmap subtitles (c
 
 - **macOS**: This tool uses Mac System OCR and only runs on macOS
 - **Node.js**: Version 22.0.0 or higher
-- **FFmpeg**: Must be installed and available in your PATH
-
-### Installing FFmpeg
-
-```bash
-# Using Homebrew (recommended)
-brew install ffmpeg
-
-# Verify installation
-ffmpeg -version
-```
 
 ## Installation
 
@@ -184,11 +173,6 @@ await decoder.generateSRT(srtEntries, "output.srt");
 ## Troubleshooting
 
 ### Common Issues
-
-**"FFmpeg not found"**
-
-- Install FFmpeg using Homebrew: `brew install ffmpeg`
-- Verify FFmpeg is in your PATH: `which ffmpeg`
 
 **"Cannot access SUB file"**
 
