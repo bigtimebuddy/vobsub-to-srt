@@ -16,7 +16,7 @@
     "test": "node lib/bin.js -i test/input.idx -o test/output.srt -v",
     "ci:test": "run-s test:* test",
     "preversion": "npm run ci:test",
-    "postversion": "git push && git push origin --tags",
+    "postversion": "git push && git push origin --tags && npm publish",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
