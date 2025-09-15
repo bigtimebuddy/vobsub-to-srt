@@ -148,23 +148,22 @@ The SUB file must be in the same directory as the IDX file and have the same fil
 You can also use this package programmatically:
 
 ```javascript
-import VobSubDecoder from "@bigtimebuddy/vobsub-to-srt";
+import { VobSubDecoder } from "@bigtimebuddy/vobsub-to-srt";
 
-const decoder = new VobSubDecoder();
-decoder.verbose = true;
+const decoder = new VobSubDecoder({ verbose: true });
 
 // Parse IDX file
 await decoder.parseIdx("subtitles.idx");
 
 // Extract frames to temporary directory
-const subtitlesWithImages = await decoder.extractSubtitleFrames(
+const frames = await decoder.extractFrames(
   "subtitles.idx",
   "subtitles.sub",
   "/tmp/frames",
 );
 
 // Process with OCR
-const srtEntries = await decoder.processSubtitlesWithOCR(subtitlesWithImages);
+const srtEntries = await decoder.processFrames(frames);
 
 // Generate SRT file
 await decoder.generateSRT(srtEntries, "output.srt");
