@@ -160,11 +160,11 @@ const decoder = new VobSubDecoder({
 // Parse IDX file
 await decoder.parse();
 
-// Extract frames to temporary directory
-const frames = await decoder.extractFrames("/tmp/frames");
-
-// Process with OCR
-const srtEntries = await decoder.processFrames(frames);
+// Process with OCR (timeline and frame extraction are handled internally)
+const srtEntries = await decoder.processFrames({
+  tempDir: "/tmp/frames",
+  quality: "fast",
+});
 
 // Generate SRT file
 await decoder.generate(srtEntries, "output.srt");

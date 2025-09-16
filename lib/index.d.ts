@@ -4,13 +4,8 @@ export interface VobSubDecoderOptions {
   subFile: string;
 }
 
-export interface SubtitleFrame {
-  imagePath: string;
-  timestamp: number;
-  frameIndex?: number;
-}
-
-export interface SrtEntry {
+export type TimelineEntry = Omit<SrtEntry, "text">;
+export interface SrtEntry extends TimelineEntry {
   index: number;
   startTime: number;
   endTime: number;
@@ -18,7 +13,11 @@ export interface SrtEntry {
 }
 
 export class VobSubDecoder {
-  constructor(options?: VobSubDecoderOptions);
+  /**
+   * Create a new VobSub decoder instance
+   * @param options Options for the VobSub decoder
+   */
+  constructor(options: VobSubDecoderOptions);
 
   /**
    * Parse the IDX file to extract metadata and timing information.
@@ -27,22 +26,14 @@ export class VobSubDecoder {
   parse(): Promise<this>;
 
   /**
-   * Extract actual subtitle frames using FFmpeg.
-   * @param tempDir Temporary directory for frame storage
-   * @returns Promise<SubtitleFrame[]>
-   */
-  extractFrames(tempDir: string): Promise<SubtitleFrame[]>;
-
-  /**
    * Process subtitle frames with OCR and return SRT entries.
-   * @param frames Array of subtitle frames
-   * @param quality OCR quality: 'fast' or 'accurate'
+   * @param options Object containing tempDir and quality options
    * @returns Promise<SrtEntry[]>
    */
-  processFrames(
-    frames: SubtitleFrame[],
-    quality?: "fast" | "accurate",
-  ): Promise<SrtEntry[]>;
+  processFrames(options: {
+    tempDir: string;
+    quality?: "fast" | "accurate";
+  }): Promise<SrtEntry[]>;
 
   /**
    * Generate SRT file from processed subtitle entries.
