@@ -1,6 +1,6 @@
 # VobSub to SRT Converter
 
-Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR. This approach has some benefits over [vobsub2srt](https://github.com/ruediger/VobSub2SRT) and [vobsubocr](https://github.com/elizagamedev/vobsubocr) in that Mac System OCR is generally more fast, accurate and built-in.
+Convert VobSub (IDX/SUB) subtitle files to SRT format using FFmpeg and Mac System OCR. This approach has some benefits over [vobsub2srt](https://github.com/ruediger/VobSub2SRT) and [vobsubocr](https://github.com/elizagamedev/vobsubocr) in that Mac System OCR is generally faster, more accurate and built-in.
 
 ## Overview
 
